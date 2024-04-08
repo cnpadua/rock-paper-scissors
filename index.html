@@ -70,21 +70,32 @@
         function playGame() {
             let score = 0;
 
-            for (let i=0; i<5; i++){
-                let computerSelection = getComputerChoice();
-                let playerSelection = prompt("Rock, paper, or scissors?");
-                let round = playRound(playerSelection, computerSelection);
+            // for (let i=0; i<5; i++){
+            //     let computerSelection = getComputerChoice();
+            //     let playerSelection = prompt("Rock, paper, or scissors?");
+            //     let round = playRound(playerSelection, computerSelection);
 
-                if (round.charAt(4) === "w"){
-                    score++;
-                }
+            //     if (round.charAt(4) === "w"){
+            //         score++;
+            //     }
                 
-                alert(`${round}. Score is ${score}`);
-                console.log(round)
-                console.log(`Score: ${score}`);
-            }
+            //     alert(`${round}. Score is ${score}`);
+            //     console.log(round)
+            //     console.log(`Score: ${score}`);
+            // }
 
-            alert(`Your total score is ${score}/5!`);
+            // alert(`Your total score is ${score}/5!`);
+
+            let rockButton = document.createElement("button");
+            rockButton.textContent = "ROCK";
+
+            let paperButton = document.createElement("button");
+            paperButton.textContent = "PAPER";
+
+            let scissorButton = document.createElement("button"); 
+            scissorButton.textContent = "SCISSOR";
+
+
         }
 
         playGame();
