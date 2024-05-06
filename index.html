@@ -7,99 +7,30 @@
 </head>
 
 <body>
-    <script>
-        console.log("hello there");
-        
-        function getRandomInt(max) {
-            return Math.floor(Math.random() * max);
-        }
-
-        function getComputerChoice() {
-            let choices = ["ROCK", "PAPER", "SCISSORS"];
-            return choices[getRandomInt(3)];
-        }
-
-        function playRound(playerSelection, computerSelection) {
-            playerSelection = playerSelection.toUpperCase();
-            let winMessage = `You win! ${playerSelection} beats ${computerSelection}`;
-            let loseMessage = `You lose! ${computerSelection} beats ${playerSelection}`;
-            
-            if (playerSelection === computerSelection) {
-                return "Draw! No one wins";
-            }
-
-            if (playerSelection === "ROCK") {
-                
-                if (computerSelection === "PAPER"){
-                    // rock v paper = compter
-                    return loseMessage;
-                }
-                else {
-                    // rock v scissors = player
-                    return winMessage;
-                }
-                
-            }
-            
-            if (playerSelection === "PAPER") {
-
-                if (computerSelection === "ROCK"){
-                    // paper v rock = player
-                    return winMessage;
-                }
-                else {
-                    // paper v scissors = computer
-                    return loseMessage;
-                }
-                
-            }
-            
-            if (playerSelection === "SCISSORS") {
-                if (computerSelection === "ROCK"){
-                    // scissors v rock = computer
-                    return loseMessage;
-                }
-                else {
-                    // scissors v paper = player
-                    return winMessage;
-                }
-            }
-        }
-
-
-        function playGame() {
-            let score = 0;
-
-            // for (let i=0; i<5; i++){
-            //     let computerSelection = getComputerChoice();
-            //     let playerSelection = prompt("Rock, paper, or scissors?");
-            //     let round = playRound(playerSelection, computerSelection);
-
-            //     if (round.charAt(4) === "w"){
-            //         score++;
-            //     }
-                
-            //     alert(`${round}. Score is ${score}`);
-            //     console.log(round)
-            //     console.log(`Score: ${score}`);
-            // }
-
-            // alert(`Your total score is ${score}/5!`);
-
-            let rockButton = document.createElement("button");
-            rockButton.textContent = "ROCK";
-
-            let paperButton = document.createElement("button");
-            paperButton.textContent = "PAPER";
-
-            let scissorButton = document.createElement("button"); 
-            scissorButton.textContent = "SCISSOR";
-
-
-        }
-
-        playGame();
-    </script>    
+    <script src="script.js"></script>   
 </body>
+    
+    <div class="header_container">
+        <h1>ROCK, PAPER, SCISSORS!</h1>
+    </div>
+
+    <div class="game_container">
+        <h2 class="round_counter">ROUND <span class="round_number">1</span></h2>
+        <div class="game_display">
+            INSERT BATTLE HERE
+        </div>
+        <div class="game_buttons">
+            <button>ROCK</button>
+            <button>PAPER</button>
+            <button>SCISSORS</button>
+        </div>
+        <div class="score_container">
+            <div class="score_counter">
+                SCORE
+                <span class="score_number">0</span>
+            </div>
+        </div>
+    </div>
+    
 
 </html>
