@@ -4,33 +4,39 @@
 <head>
     <meta charset="utf-8">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="rps_ui.css"></link>
 </head>
 
-<body>
-    <script src="script.js"></script>   
-</body>
+<body>  
     
-    <div class="header_container">
-        <h1>ROCK, PAPER, SCISSORS!</h1>
-    </div>
 
     <div class="game_container">
+
+        <div class="header_container">
+            <h1>ROCK, PAPER, SCISSORS!</h1>
+        </div>
+
         <h2 class="round_counter">ROUND <span class="round_number">1</span></h2>
+
         <div class="game_display">
             INSERT BATTLE HERE
         </div>
+
         <div class="game_buttons">
-            <button>ROCK</button>
-            <button>PAPER</button>
-            <button>SCISSORS</button>
+            <button class="rock_button">ROCK</button>
+            <button class="paper_button">PAPER</button>
+            <button class="scissors_button">SCISSORS</button>
         </div>
+
         <div class="score_container">
             <div class="score_counter">
                 SCORE
                 <span class="score_number">0</span>
             </div>
         </div>
-    </div>
-    
 
+    </div>
+</body>
+
+<script src="script.js"></script>   
 </html>
