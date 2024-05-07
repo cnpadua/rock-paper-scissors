@@ -103,6 +103,10 @@ function getScore(message){
     }
 }
 
+function increaseRoundCounter(){
+    const round_counter = document.querySelector(".round_number");
+    round_counter.textContent = Number(round_counter.textContent) + 1;
+}
 function increaseScoreCounter() {
     const score_counter = document.querySelector(".score_number");
     console.log("score_number:", score_counter.textContent);
@@ -133,5 +137,6 @@ for (let i=0; i<3; i++){
 
         score += round_score;
         console.log("result:", round_message, score);
+        increaseRoundCounter();
     });
 }
