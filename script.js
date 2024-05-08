@@ -149,7 +149,12 @@ function main() {
             
             const computer_choice_icon = document.querySelector(".computer_choice_icon");
             computer_choice_icon.setAttribute("src", `./images/${computerChoice.toLowerCase()}.svg`);
+            
+            // UPDATE ROUND MESSAGE
+            let round_message_html = document.querySelector(".round_message");
+            round_message_html.textContent = `YOU ${round_message}`;
 
+            // INCRASE ROUND AND SCORE COUNTER
             if(round_score == 1){
                 increaseScoreCounter();
             }
