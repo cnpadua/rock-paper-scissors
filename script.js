@@ -103,40 +103,60 @@ function getScore(message){
     }
 }
 
+// ROUND AND SCORE INCREMENTERS
 function increaseRoundCounter(){
     const round_counter = document.querySelector(".round_number");
     round_counter.textContent = Number(round_counter.textContent) + 1;
 }
+
 function increaseScoreCounter() {
     const score_counter = document.querySelector(".score_number");
     console.log("score_number:", score_counter.textContent);
     let score = Number(score_counter.textContent)+1;
     score_counter.textContent = score.toString();
 }
-// PREPPING COMPONENTS
-let score = 0;
-const rock_button = document.querySelector(".rock_button");
-const paper_button = document.querySelector(".paper_button");
-const scissors_button = document.querySelector(".scissors_button");
 
-game_buttons = [rock_button, paper_button, scissors_button];
 
-// ADDING EVENT LISTENERS
-for (let i=0; i<3; i++){
-    game_buttons[i].addEventListener("click", () => {
-        playerChoice = game_buttons[i].textContent;
-        computerChoice = getComputerChoice();
-        
-        round_message = playRound(playerChoice, computerChoice);
-        round_score = getScore(round_message);
-        console.log("round_score:", round_score);
+function main() {
+    // PREPPING COMPONENTS
+    let score = 0;
+    const rock_button = document.querySelector(".rock_button");
+    const paper_button = document.querySelector(".paper_button");
+    const scissors_button = document.querySelector(".scissors_button");
 
-        if(round_score == 1){
-            increaseScoreCounter();
-        }
+    let game_buttons = [rock_button, paper_button, scissors_button];
 
-        score += round_score;
-        console.log("result:", round_message, score);
-        increaseRoundCounter();
-    });
+    // ADDING EVENT LISTENERS
+    for (let i=0; i<3; i++){
+        game_buttons[i].addEventListener("click", () => {
+            // GETTING CHOICES
+            let playerChoice = game_buttons[i].textContent;
+            let computerChoice = getComputerChoice();
+            
+            // GETTING RESULTS
+            let round_message = playRound(playerChoice, computerChoice);
+            let round_score = getScore(round_message);
+            score += round_score;
+
+            console.log("round_score:", round_score);
+            console.log("result:", round_message, score);
+
+            // UPDATING HTML
+
+            // ADD ICONS
+            const play_choice_icon = document.querySelector(".player_choice_icon");
+            play_choice_icon.setAttribute("src", `./images/${playerChoice.toLowerCase()}.svg`);
+            
+            const computer_choice_icon = document.querySelector(".computer_choice_icon");
+            computer_choice_icon.setAttribute("src", `./images/${computerChoice.toLowerCase()}.svg`);
+
+            if(round_score == 1){
+                increaseScoreCounter();
+            }
+            increaseRoundCounter();
+            
+        });
+    }
 }
+
+main();
