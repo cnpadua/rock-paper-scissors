@@ -1,4 +1,4 @@
-console.log("hello there");
+// console.log("hello there");
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -116,6 +116,32 @@ function increaseScoreCounter() {
     score_counter.textContent = score.toString();
 }
 
+function reset(){
+    // DISPLAY ALERT MESSAGE
+    let score_number = document.querySelector(".score_number");
+
+    if (Number(score_number) < 4){
+        alert("YOU LOSE! Try again?")
+    } else {
+        alert ("YOU WIN! Play again?")
+    }
+
+    // RESET COMPONENTS
+    let round_number = document.querySelector(".round_number");
+    round_number.textContent = 1;
+    score_number.textContent = 0;
+
+    // -- reset icons
+    let player_icon = document.querySelector(".player_choice_icon");
+    let computer_icon = document.querySelector(".computer_choice_icon");
+
+    player_icon.setAttribute("src", "");
+    computer_icon.setAttribute("src", "");
+
+    // -- reset round message
+    let round_message = document.querySelector(".round_message");
+    round_message.textContent = "Click a button above to begin! Best of 5 wins >:)"
+}
 
 function main() {
     // PREPPING COMPONENTS
@@ -138,27 +164,34 @@ function main() {
             let round_score = getScore(round_message);
             score += round_score;
 
-            console.log("round_score:", round_score);
-            console.log("result:", round_message, score);
+            // console.log("round_score:", round_score);
+            // console.log("result:", round_message, score);
 
             // UPDATING HTML
 
-            // ADD ICONS
+            // -- ADD ICONS
             const play_choice_icon = document.querySelector(".player_choice_icon");
             play_choice_icon.setAttribute("src", `./images/${playerChoice.toLowerCase()}.svg`);
             
             const computer_choice_icon = document.querySelector(".computer_choice_icon");
             computer_choice_icon.setAttribute("src", `./images/${computerChoice.toLowerCase()}.svg`);
             
-            // UPDATE ROUND MESSAGE
+            // -- UPDATE ROUND MESSAGE
             let round_message_html = document.querySelector(".round_message");
             round_message_html.textContent = `YOU ${round_message}`;
 
-            // INCRASE ROUND AND SCORE COUNTER
+            // -- INCRASE ROUND AND SCORE COUNTER
             if(round_score == 1){
                 increaseScoreCounter();
             }
-            increaseRoundCounter();
+
+            // -- CHECK ROUND COUNTER, RESET AT ROUND 5
+            let round_number = Number(document.querySelector(".round_number").textContent);
+            if (round_number == 5){
+                reset();
+            } else {
+                increaseRoundCounter();
+            }
             
         });
     }
